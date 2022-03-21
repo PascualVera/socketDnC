@@ -1,4 +1,6 @@
-'use strict'
+
+// Puerto express
+let puertoSocket = process.env.PORT || 3000;
 
 const app = require('express')();
 const serverHttp = require('http').Server(app);
@@ -16,6 +18,6 @@ io.on('connection', (socket) => {
     })
 })
 
-serverHttp.listen(3000, () => {
-    console.log('Servidor http corriendo en el puerto 3000');
+serverHttp.listen(puertoSocket, () => {
+    console.log(`Servidor http corriendo en el puerto ${puertoSocket}`);
 })
