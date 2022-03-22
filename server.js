@@ -15,7 +15,11 @@ const io = require('socket.io')(serverHttp, {
 io.on('connection', (socket) => {
     socket.on('send-message', (data) => {
         socket.broadcast.emit('new-message', data);
-    })
+    });
+    socket.on('send-escribiendo', (data) => {
+        socket.emit('new-escribiendo', data);
+        socket.broadcast.emit('new-escribiendo', data);
+    });
 })
 
 serverHttp.listen(puertoSocket, () => {
