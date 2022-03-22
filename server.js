@@ -20,6 +20,9 @@ io.on('connection', (socket) => {
         socket.emit('new-escribiendo', data);
         socket.broadcast.emit('new-escribiendo', data);
     });
+    socket.on('send-map', (data) => {
+        socket.broadcast.emit('new-map', data);
+    });
 })
 
 serverHttp.listen(puertoSocket, () => {
