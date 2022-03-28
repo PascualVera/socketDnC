@@ -33,6 +33,10 @@ io.on('connection', (socket) => {
     socket.on('send-finalizar', (data) => {
         socket.broadcast.emit('new-finalizar', data);
     });
+    // Evento para controlar si un usuario está en estado playing
+    socket.on('send-playing', (data) => {
+        socket.broadcast.emit('new-playing', data);
+    });
 })
 
 serverHttp.listen(puertoSocket, () => {
