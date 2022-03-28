@@ -37,6 +37,10 @@ io.on('connection', (socket) => {
     socket.on('send-playing', (data) => {
         socket.broadcast.emit('new-playing', data);
     });
+    // Evento para refrescar numPlayers y array players chat cuando se unen o abandonan
+    socket.on('send-masmenosplayer', (data) => {
+        socket.broadcast.emit('new-masmenosplayer', data);
+    });
 })
 
 serverHttp.listen(puertoSocket, () => {
