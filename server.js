@@ -41,6 +41,10 @@ io.on('connection', (socket) => {
     socket.on('send-masmenosplayer', (data) => {
         socket.broadcast.emit('new-masmenosplayer', data);
     });
+    // Evento para evitar seleccionar el mismo personaje al unirse a la misma campaña a la vez
+    socket.on('send-personaje', (data) => {
+        socket.broadcast.emit('new-personaje', data);
+    });
 })
 
 serverHttp.listen(puertoSocket, () => {
